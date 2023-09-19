@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="false" > 
+<link href="/fontawesome/css/fontawesome.css" rel="stylesheet">
+<link href="/fontawesome/css/brands.css" rel="stylesheet">
+<link href="/fontawesome/css/solid.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>swift_node_3 | 小商店飞的地盘</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="枚举关联值 定义枚举的时候可以指定关联值 123456789101112131415161718enum Score &#123;	case points(Int)	case grade(Character)&#125;enum Date &#123;  case digit(year: Int, month: Int, day: Int)  case string(String)&#125;va">
+<meta property="og:type" content="article">
+<meta property="og:title" content="swift_node_3">
+<meta property="og:url" content="http://yoursite.com/2021/06/15/swift-node-3/index.html">
+<meta property="og:site_name" content="小商店飞的地盘">
+<meta property="og:description" content="枚举关联值 定义枚举的时候可以指定关联值 123456789101112131415161718enum Score &#123;	case points(Int)	case grade(Character)&#125;enum Date &#123;  case digit(year: Int, month: Int, day: Int)  case string(String)&#125;va">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-06-15T03:39:24.000Z">
+<meta property="article:modified_time" content="2023-09-19T04:06:17.089Z">
+<meta property="article:author" content="小商店飞">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="小商店飞的地盘" type="application/atom+xml">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.0.0-rc2"></head>
+
+<body>
+  
+   
+  <div id="main-grid" class="shadow   ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>小商店飞的地盘 </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">Your Name </div>
+      <div class="dot"></div>
+      <div class="subtitle">This is the subtitle </div>
+      <div class="link-list">
+        
+          <a class="link-btn" href="https://twitter.com" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        
+          <a class="link-btn" href="https://store.steampowered.com" title="Steam"><i class="fa-brands fa-steam"></i></a>
+        
+          <a class="link-btn" href="https://github.com" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Tags</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Flutter/" rel="tag">Flutter</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Mac%E8%BD%AF%E4%BB%B6/" rel="tag">Mac软件</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/OMV/" rel="tag">OMV</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Swift/" rel="tag">Swift</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/VPS%E9%82%A3%E4%BA%9B%E4%BA%8B/" rel="tag">VPS那些事</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/armbian/" rel="tag">armbian</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%88%91%E5%AE%B6%E4%BA%91/" rel="tag">我家云</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E6%97%A5%E5%B8%B8/" rel="tag">日常</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" rel="tag">黑苹果</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Archives</h3>
+      
+      
+        <a class="archive-link" href="/archives/2021/06 ">
+          June 2021 
+          <div class="archive-count">4 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2021/05 ">
+          May 2021 
+          <div class="archive-count">1 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2021/04 ">
+          April 2021 
+          <div class="archive-count">1 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2020/11 ">
+          November 2020 
+          <div class="archive-count">1 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2019/07 ">
+          July 2019 
+          <div class="archive-count">2 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2019/06 ">
+          June 2019 
+          <div class="archive-count">2 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2019/03 ">
+          March 2019 
+          <div class="archive-count">2 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2019/02 ">
+          February 2019 
+          <div class="archive-count">1 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2018/11 ">
+          November 2018 
+          <div class="archive-count">2 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2018/10 ">
+          October 2018 
+          <div class="archive-count">1 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2018/08 ">
+          August 2018 
+          <div class="archive-count">1 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2018/06 ">
+          June 2018 
+          <div class="archive-count">2 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2018/05 ">
+          May 2018 
+          <div class="archive-count">1 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2018/04 ">
+          April 2018 
+          <div class="archive-count">4 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2018/03 ">
+          March 2018 
+          <div class="archive-count">2 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2017/12 ">
+          December 2017 
+          <div class="archive-count">1 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2017/11 ">
+          November 2017 
+          <div class="archive-count">1 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2017/10 ">
+          October 2017 
+          <div class="archive-count">1 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2017/06 ">
+          June 2017 
+          <div class="archive-count">2 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2017/05 ">
+          May 2017 
+          <div class="archive-count">4 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2017/04 ">
+          April 2017 
+          <div class="archive-count">4 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2017/03 ">
+          March 2017 
+          <div class="archive-count">1 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2017/01 ">
+          January 2017 
+          <div class="archive-count">1 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2016/12 ">
+          December 2016 
+          <div class="archive-count">2 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2016/08 ">
+          August 2016 
+          <div class="archive-count">2 </div>
+        </a>
+      
+        <a class="archive-link" href="/archives/2016/05 ">
+          May 2016 
+          <div class="archive-count">1 </div>
+        </a>
+      
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Recent Posts</h3>
+      <ul>
+        
+          <a class="recent-link" href="/2021/06/24/swift-node-4/" title="swift_node_4" >
+            <div class="recent-link-text">
+              swift_node_4
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2021/06/15/swift-node-3/" title="swift_node_3" >
+            <div class="recent-link-text">
+              swift_node_3
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2021/06/11/swift-node-2/" title="swift_node_2" >
+            <div class="recent-link-text">
+              swift_node_2
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2021/06/09/swift-node-1/" title="swift_node_1" >
+            <div class="recent-link-text">
+              swift_node_1
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2021/05/27/python-%E5%85%AC%E5%85%B1%E6%93%8D%E4%BD%9C/" title="python-公共操作" >
+            <div class="recent-link-text">
+              python-公共操作
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+<article id="post-swift-node-3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        swift_node_3
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2021-06-15T03:39:24.000Z" itemprop="datePublished">2021-06-15</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            931 words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><h4 id="关联值"><a href="#关联值" class="headerlink" title="关联值"></a>关联值</h4><ul>
+<li><p>定义枚举的时候可以指定关联值</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">Score</span> &#123;</span><br><span class="line">	<span class="keyword">case</span> points(<span class="type">Int</span>)</span><br><span class="line">	<span class="keyword">case</span> grade(<span class="type">Character</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Date</span> &#123;</span><br><span class="line">  <span class="keyword">case</span> digit(year: <span class="type">Int</span>, month: <span class="type">Int</span>, day: <span class="type">Int</span>)</span><br><span class="line">  <span class="keyword">case</span> string(<span class="type">String</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> date <span class="operator">=</span> <span class="type">Date</span>.digit(year: <span class="number">2021</span>, month: <span class="number">9</span>, day: <span class="number">10</span>)</span><br><span class="line">date <span class="operator">=</span> .string(<span class="string">&quot;2021-9-10&quot;</span>)</span><br><span class="line"><span class="keyword">switch</span> date &#123;</span><br><span class="line">  <span class="keyword">case</span> .digit(<span class="keyword">let</span> year, <span class="keyword">let</span> month, <span class="keyword">let</span> day):</span><br><span class="line">  	<span class="built_in">print</span>(year, month, day)</span><br><span class="line">  <span class="keyword">case</span> <span class="keyword">let</span> .string(value)</span><br><span class="line">  	<span class="built_in">print</span>(value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关联值是存在枚举的内存中的</p>
+</li>
+<li><p>关联值枚举中有1个字节存储成员变量（哪个枚举），N个字节存储关联值（N取占用内存最大的关联值），所有case的关联值共用这N个字节</p>
+</li>
+<li><p>只有一个case的时候，不用花费1个字节存储成员变量，也就是只有一个case，占用的内存是N个字节存储关联值</p>
+</li>
+</ul>
+<h4 id="原始值"><a href="#原始值" class="headerlink" title="原始值"></a>原始值</h4><ul>
+<li><p>枚举成员可以使用相同类型的默认值预先关联，这个默认值叫做：原始值</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">PokerSuit</span> : <span class="title class_">String</span> &#123;</span><br><span class="line">	<span class="keyword">case</span> spade <span class="operator">=</span> <span class="string">&quot;黑桃&quot;</span></span><br><span class="line">	<span class="keyword">case</span> heart <span class="operator">=</span> <span class="string">&quot;红桃&quot;</span></span><br><span class="line">	<span class="keyword">case</span> diamond <span class="operator">=</span> <span class="string">&quot;方块&quot;</span></span><br><span class="line">	<span class="keyword">case</span> club <span class="operator">=</span> <span class="string">&quot;梅花&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> suit <span class="operator">=</span> <span class="type">PokerSuit</span>.spade</span><br><span class="line"><span class="built_in">print</span>(suit) <span class="comment">// spade</span></span><br><span class="line"><span class="built_in">print</span>(suit.rawValue) <span class="comment">// 黑桃</span></span><br><span class="line"><span class="built_in">print</span>(<span class="type">PokerSuit</span>.club.rawValue) <span class="comment">//梅花</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>枚举的原始值类型是<code>Int</code>、<code>String</code>，Swift会自动分配原始值</p>
+</li>
+<li><p>原始值不存储在枚举内存中，不占用枚举内存</p>
+</li>
+</ul>
+<h4 id="原始值和关联值的区别"><a href="#原始值和关联值的区别" class="headerlink" title="原始值和关联值的区别"></a>原始值和关联值的区别</h4><ul>
+<li>关联值不同的枚举变量可以设置不同的值，原始值是不可以改变的</li>
+<li>设置为原始值的枚举，不可以在设置关联值</li>
+</ul>
+<h4 id="递归枚举"><a href="#递归枚举" class="headerlink" title="递归枚举"></a>递归枚举</h4><ul>
+<li><p>枚举的关联值是枚举本身，枚举前面需要加<code>indirect</code>关键字</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">indirect</span> <span class="keyword">enum</span> <span class="title class_">ArithExpr</span> &#123;</span><br><span class="line">	<span class="keyword">case</span> number(<span class="type">Int</span>)</span><br><span class="line">	<span class="keyword">case</span> sum(<span class="type">ArithExpr</span>, <span class="type">ArithExpr</span>)</span><br><span class="line">	<span class="keyword">case</span> difference(<span class="type">ArithExpr</span>, <span class="type">ArithExpr</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 或</span></span><br><span class="line"> <span class="keyword">enum</span> <span class="title class_">ArithExpr</span> &#123;</span><br><span class="line">	<span class="keyword">case</span> number(<span class="type">Int</span>)</span><br><span class="line">	<span class="keyword">indirect</span> <span class="keyword">case</span> sum(<span class="type">ArithExpr</span>, <span class="type">ArithExpr</span>)</span><br><span class="line">	<span class="keyword">indirect</span> <span class="keyword">case</span> difference(<span class="type">ArithExpr</span>, <span class="type">ArithExpr</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="MemoryLayout"><a href="#MemoryLayout" class="headerlink" title="MemoryLayout"></a>MemoryLayout</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">MemoryLayout</span>&lt;<span class="type">Int</span>&gt;.size <span class="comment">//8字节 Int类型实际占用的内存</span></span><br><span class="line"><span class="type">MemoryLayout</span>&lt;<span class="type">Int</span>&gt;.stride <span class="comment">//8字节 Int类型分配的内存</span></span><br><span class="line"><span class="type">MemoryLayout</span>&lt;<span class="type">Int</span>&gt;.alignment <span class="comment">//8字节 Int类型对齐内存</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a <span class="operator">=</span> <span class="number">10</span></span><br><span class="line"><span class="type">MemoryLayout</span>.size(ofValue: a) <span class="comment">//8字节 a实际占用的内存</span></span><br><span class="line"><span class="type">MemoryLayout</span>.stride(ofValue: a) <span class="comment">//8字节 a分配的内存</span></span><br><span class="line"><span class="type">MemoryLayout</span>.alignment(ofValue: a) <span class="comment">//8字节 a对齐内存</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="可选项"><a href="#可选项" class="headerlink" title="可选项"></a>可选项</h3><ul>
+<li>可选项允许将值设置为<code>nil</code></li>
+<li>在类型名称后面加<code>?</code>来定义一个可选项</li>
+<li>使用<code>!</code>可以对可选项进行强制解包</li>
+<li>对<code>nil</code>强制解包会报错</li>
+<li>可以使用可选项绑定来判断可选项是否包含值，包含值返回<code>true</code>,不包含返回<code>false</code></li>
+<li>在类型名称后面加<code>!</code>来定义一个隐式解包可选项，隐式解包，在使用的时候会默认解包</li>
+</ul>
+<h4 id="空合并运算符"><a href="#空合并运算符" class="headerlink" title="空合并运算符"></a>空合并运算符</h4><ul>
+<li><code>a ?? b</code></li>
+<li><code>a</code>是可选项，<code>b</code>是可选项或不是可选项</li>
+<li><code>b</code>和<code>a</code>的存储类型必须相同</li>
+<li>如果<code>a</code>为<code>nil</code>,则返回<code>b</code>,如果<code>a</code>不为<code>nil</code>,则返回<code>a</code></li>
+<li>如果<code>b</code>不是可选项是，返回<code>a</code>时会自动解包</li>
+</ul>
+<h3 id="查看变量内存"><a href="#查看变量内存" class="headerlink" title="查看变量内存"></a>查看变量内存</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">frame variable <span class="operator">-</span><span class="type">R</span> 或 fr v <span class="operator">-</span><span class="type">R</span></span><br><span class="line">variable 和 v 是变量名</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="汇编相关"><a href="#汇编相关" class="headerlink" title="汇编相关"></a>汇编相关</h3><ul>
+<li><code>mov</code> 是把内存地址所指存储空间的值，取出来赋值，<code>lea</code>是把内存地址直接赋值</li>
+<li><code>jmp</code>跳转到地址所指的指令去执行，<code>call</code>跳转调地址所指的指令执行，但会和<code>ret</code>配合使用，<code>ret</code>会返回，继续执行<code>call</code>下面的指令</li>
+</ul>
+<h4 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h4><p><code>rip</code> 存储一个汇编指令的地址</p>
+<h3 id="LLDB常用指令"><a href="#LLDB常用指令" class="headerlink" title="LLDB常用指令"></a>LLDB常用指令</h3><ul>
+<li><code>register read rax</code> 读取寄存器<code>rax</code>的值</li>
+<li><code>register write rax 0x1</code>  向寄存器<code>rax</code>写入值<code>0x1</code></li>
+<li><code>register read</code> 列出所有寄存器的值</li>
+<li><code>n</code> 单步运行，函数当整体直接跳过</li>
+<li><code>s</code>单步运行，进入函数中 </li>
+<li><code>ni</code> 单步运行，调试汇编用，功能同<code>n</code></li>
+<li><code>si</code>单步运行，调试汇编用，功能同<code>s</code></li>
+<li><code>finish</code>直接执行完当前函数的所有代码，返回到上一个函数，遇到其他断点也会停止</li>
+</ul>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/2021/06/24/swift-node-4/"
+      title="swift_node_4"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        swift_node_4
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2021/06/11/swift-node-2/"
+      title="swift_node_2"
+     >
+
+    <p class="title-text">
+      
+        swift_node_2
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+ 
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2023 Your Name<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>
